@@ -18,13 +18,13 @@ matlab:	binary
 
 octave:
 	@echo "please type make under Octave"
-binary: train.$(MEX_EXT) predict.$(MEX_EXT) libsvmread.$(MEX_EXT) libsvmwrite.$(MEX_EXT)
+binary: liblinear_train.$(MEX_EXT) liblinear_predict.$(MEX_EXT) libsvmread.$(MEX_EXT) libsvmwrite.$(MEX_EXT)
 
-train.$(MEX_EXT): train.c ../linear.h ../tron.o ../linear.o linear_model_matlab.o ../blas/blas.a
-	$(MEX) $(MEX_OPTION) train.c ../tron.o ../linear.o linear_model_matlab.o ../blas/blas.a
+liblinear_train.$(MEX_EXT): liblinear_train.c ../linear.h ../tron.o ../linear.o linear_model_matlab.o ../blas/blas.a
+	$(MEX) $(MEX_OPTION) liblinear_train.c ../tron.o ../linear.o linear_model_matlab.o ../blas/blas.a
 
-predict.$(MEX_EXT): predict.c ../linear.h ../tron.o ../linear.o linear_model_matlab.o ../blas/blas.a
-	$(MEX) $(MEX_OPTION) predict.c ../tron.o ../linear.o linear_model_matlab.o ../blas/blas.a
+liblinear_predict.$(MEX_EXT): liblinear_predict.c ../linear.h ../tron.o ../linear.o linear_model_matlab.o ../blas/blas.a
+	$(MEX) $(MEX_OPTION) liblinear_predict.c ../tron.o ../linear.o linear_model_matlab.o ../blas/blas.a
 
 libsvmread.$(MEX_EXT):	libsvmread.c
 	$(MEX) $(MEX_OPTION) libsvmread.c
